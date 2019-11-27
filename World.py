@@ -19,6 +19,7 @@ class World:
         else:
             self.height = width
         self.world = np.zeros((self.height, self.width), dtype=int)
+        
 
     def get(self, x: int, y: int) -> int:
         """
@@ -43,6 +44,11 @@ class World:
         if x < 0 or y < 0 or x >= self.width or y >= self.height:
             return
         self.world[y][x] = value
+
+                
+    def check_survive(self):
+        pass
+        
 
     def get_neighbours(self, x: int, y:int) -> List[int]:
         """
