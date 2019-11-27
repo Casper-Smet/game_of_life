@@ -43,3 +43,7 @@ class TestWorld(TestCase):
         neighbours = self.world.get_neighbours(x, y)
         self.assertEqual(8, len(neighbours))
         self.assertIn(value, neighbours)
+
+    def test_check_survive(self):
+        self.assertEqual(self.world.check_survive(), True)
+        self.assertEqual(self.world.check_survive(), False)
