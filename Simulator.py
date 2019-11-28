@@ -37,9 +37,18 @@ class Simulator:
 
         :return: New state of the world.
         """
-        self.generation += 1
         
-        #TODO: Do something to evolve the generation
+        next_flat_world = []
+        for y in range(self.get_world().height):
+            for x in range(self.get_world().width):
+                value = self.update_cell(x, y)
+                next_flat_world.append((x, y, value))
+        
+        for cell in next_flat_world:
+            x, y, value = cell
+            self.world.set(x, y, value=value)
+        
+        self.generation += 1
 
         return self.world
 

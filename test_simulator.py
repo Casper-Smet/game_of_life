@@ -18,12 +18,12 @@ class TestSimulator(TestCase):
         world = World(5)
         world.set(1, 2)
         world.set(2, 2)
-        world.set(2, 3)
+        world.set(3, 2)
 
         world2 = World(5)
         world2.set(2, 1)
         world2.set(2, 2)
-        world2.set(3, 2)
+        world2.set(2, 3)
 
         sim = Simulator(world=world)
         # In order to check equality between two numpy arrays, you have to use np.array_equal
