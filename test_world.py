@@ -45,6 +45,9 @@ class TestWorld(TestCase):
         self.assertIn(value, neighbours)
 
     def test_check_survive(self):
+        """
+        Tests if cell survives
+        """
         x1, y1 = 4, 6  
         x2, y2 = 6, 7
         
@@ -53,3 +56,17 @@ class TestWorld(TestCase):
         print(self.world.get_neighbours(6, 7))
         self.assertEqual(self.world.check_survive(x1, y1), False)
         self.assertEqual(self.world.check_survive(x2, y2), True)
+
+    def test_check_rebirth(self):
+        """
+        Check if cell is (re)born
+        """
+        x1, y1 = 7, 9
+        x2, y2 = 1, 1
+
+        print(self.world.get_neighbours(x1, y1))
+        self.assertEqual(self.world.check_rebirth(x1, x2), True)
+
+        print(self.world.get_neighbours(x2, y2))
+        self.assertEqual(self.world.check_rebirth(x2, y2), False)
+
