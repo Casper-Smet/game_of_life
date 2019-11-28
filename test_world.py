@@ -45,5 +45,11 @@ class TestWorld(TestCase):
         self.assertIn(value, neighbours)
 
     def test_check_survive(self):
-        self.assertEqual(self.world.check_survive(), True)
-        self.assertEqual(self.world.check_survive(), False)
+        x1, y1 = 4, 6  
+        x2, y2 = 6, 7
+        
+        self.world.set(6, 6)
+        self.world.set(5, 6)
+        print(self.world.get_neighbours(6, 7))
+        self.assertEqual(self.world.check_survive(x1, y1), False)
+        self.assertEqual(self.world.check_survive(x2, y2), True)
