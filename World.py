@@ -51,7 +51,8 @@ class World:
         return 2 <= alive <= 3
 
     def check_rebirth(self, x: int, y: int):
-        pass
+        living_neighbours = sum([bool(x) for x in self.get_neighbours(x, y)])
+        return living_neighbours == 3
 
     def get_neighbours(self, x: int, y:int) -> List[int]:
         """
