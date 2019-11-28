@@ -18,11 +18,17 @@ class Simulator:
         else:
             self.world = world
 
-    def update_cell(self, x: int, y: int) -> World:
+    def update_cell(self, x: int, y: int):
         """
-        Updates the state of a single cell to the next generation. Uses rules for evolution.
+        Returns the state of a single cell to the next generation. Uses rules for evolution.
         """
-        pass
+        value = self.get_world().get(x, y)
+        if value == 0:
+            new_state = self.get_world().check_rebirth(x, y)
+        else:
+            new_state = self.get_world().check_survive(x, y)
+
+        return new_state
 
 
     def update(self) -> World:

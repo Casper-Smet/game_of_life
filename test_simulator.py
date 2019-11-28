@@ -26,19 +26,15 @@ class TestSimulator(TestCase):
         self.sim.world.set(0, 1)
         self.sim.world.set(2, 0)
 
-        self.sim.update_cell(x1, y1)
         # Check if alive
-        self.assertEqual(self.sim.world.get(x1, y1), 1)
-        # Check if dead
-        self.assertEqual(self.sim.world.get(x1, y1), 0)
+        self.assertEqual(self.sim.update_cell(x1, y1), 1)
+        
 
         # kill two cells so that (x1, y1) dies
         self.sim.world.set(1, 0, value=0)
         self.sim.world.set(0, 1, value=0)
-
-        self.sim.update_cell(x1, y1)
-        self.assertEqual(self.sim.world.get(x1, y1), 0)
-        self.assertEqual(self.sim.world.get(x1, y1), 1)
+        self.assertEqual(self.sim.update_cell(x1, y1), 0)
+        
 
     def test_get_generation(self):
         """
