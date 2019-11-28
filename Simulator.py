@@ -18,6 +18,13 @@ class Simulator:
         else:
             self.world = world
 
+    def update_cell(self, x: int, y: int) -> World:
+        """
+        Updates the state of a single cell to the next generation. Uses rules for evolution.
+        """
+        pass
+
+
     def update(self) -> World:
         """
         Updates the state of the world to the next generation. Uses rules for evolution.
@@ -25,7 +32,7 @@ class Simulator:
         :return: New state of the world.
         """
         self.generation += 1
-
+        
         #TODO: Do something to evolve the generation
 
         return self.world
