@@ -1,5 +1,6 @@
 from unittest import TestCase
 from Simulator import *
+from numpy import array_equal
 
 
 class TestSimulator(TestCase):
@@ -14,6 +15,21 @@ class TestSimulator(TestCase):
         Tests that the update functions returns an object of World type.
         """
         self.assertIsInstance(self.sim.update(), World)
+        world = World(5)
+        world.set(1, 2)
+        world.set(2, 2)
+        world.set(2, 3)
+
+        world2 = World(5)
+        world2.set(2, 1)
+        world2.set(2, 2)
+        world2.set(3, 2)
+
+        sim = Simulator(world=world)
+        # In order to check equality between two numpy arrays, you have to use np.array_equal
+        self.assertEqual(array_equal(sim.update().world, world2.world), True)
+
+        
 
     def test_update_cell(self):
         """
