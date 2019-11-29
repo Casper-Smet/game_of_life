@@ -97,14 +97,14 @@ class TestWorld(TestCase):
         # Minimum for vertility
         self.world.set(6, 6, 2)
         self.world.set(5, 6, 2)
-        self.assertEqual(self.world.check_rebirth(x2, y2, a=6), True)
+        self.assertEqual(self.world.check_rebirth(x2, y2, a=6, b=[2]), True)
         
         # Below vertility
         self.world.set(6, 6, 1)
         self.world.set(5, 6, 1)
-        self.assertEqual(self.world.check_rebirth(x2, y2, a=6), False)
+        self.assertEqual(self.world.check_rebirth(x2, y2, a=6, b=[2]), False)
 
         # Above vertility
         self.world.set(6, 6, 5)
         self.world.set(5, 6, 5)
-        self.assertEqual(self.world.check_rebirth(x2, y2, a=6), False)
+        self.assertEqual(self.world.check_rebirth(x2, y2, a=6, b=[2]), False)

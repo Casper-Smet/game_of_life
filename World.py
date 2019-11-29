@@ -53,7 +53,13 @@ class World:
         return bool(sum([alive == a_state for a_state in s]))
 
     def check_rebirth(self, x: int, y: int, b: List[int] = [3], a: int = None):
-        living_neighbours = sum([bool(x) for x in self.get_neighbours(x, y)])
+        if a:
+            a_min = 2
+            a_max = a - 2
+            living_neighbours = sum([(a_min <= x and a_max >= x) for x in self.get_neighbours(x, y)])
+            
+        else:
+            living_neighbours = sum([bool(x) for x in self.get_neighbours(x, y)])
         return bool(sum([living_neighbours == b_state for b_state in b]))
 
 
