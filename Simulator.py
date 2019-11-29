@@ -37,9 +37,29 @@ class Simulator:
         """
         value = self.get_world().get(x, y)
         if value == 0:
-            new_state = self.get_world().check_rebirth(x, y, b = self.b)
+            reborn = self.get_world().check_rebirth(x, y, b = self.b, a=self.a)
+            if reborn:
+                if self.a:
+                    new_state = self.a
+                    print(new_state)
+                else:
+                    new_state = 1
+            else:
+                new_state = 0
+
         else:
-            new_state = self.get_world().check_survive(x, y, s = self.s)
+            survived = self.get_world().check_survive(x, y, s = self.s)
+            if self.a: 
+                if survived:
+                    new_state = value
+                else:
+                    new_state = value - 1
+            else:
+                if survived:
+                    new_state = value
+                else:
+                    new_state = 0
+            
         return new_state
 
 
