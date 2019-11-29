@@ -26,7 +26,7 @@ if __name__ == "__main__":
         s = [2,3]
     
     print(f"Rules;\nb={b}\ts={s}")
-    sim = Simulator(w)
+    sim = Simulator(w, b=b, s=s)
 
     if VISUALISATION:
         vis = Visualisation(sim)
