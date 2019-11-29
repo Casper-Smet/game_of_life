@@ -56,6 +56,19 @@ class TestSimulator(TestCase):
         self.assertEqual(array_equal(sim2.update().world, world4.world), True)
 
 
+        world5 = World(5)
+        world5.set(2, 2, value=3)
+        # Simulator with age condition, birth at 1 neighbour, survival at 9 (impossible)
+        sim3 = Simulator(world=world5, b=[1], s=[9], a=6)
+        sim3.update()
+        self.assertEqual(sim3.world.get(2, 2), 2)
+        self.assertEqual(sim3.world.get_neighbours(2, 2), [6 for _ in range(8)])
+
+        sim3.update()
+        self.assertEqual(sim3.world.get(2, 2), 1)
+        self.assertEqual(sim3.world.get_neighbours(2, 2), [5 for _ in range(8)])
+
+
         
 
     def test_update_cell(self):
