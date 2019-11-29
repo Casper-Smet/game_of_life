@@ -35,10 +35,9 @@ class Simulator:
         """
         value = self.get_world().get(x, y)
         if value == 0:
-            new_state = self.get_world().check_rebirth(x, y)
+            new_state = self.get_world().check_rebirth(x, y, b = self.b)
         else:
-            new_state = self.get_world().check_survive(x, y)
-
+            new_state = self.get_world().check_survive(x, y, s = self.s)
         return new_state
 
 

@@ -51,15 +51,18 @@ class TestSimulator(TestCase):
         self.sim.world.set(0, 1, value=0)
         self.assertEqual(self.sim.update_cell(x1, y1), 0)
         
-        # Make a new simulator with birth condition 1
+        # Make a new simulator with birth condition 1, surival condition 2
         sim2 = Simulator(world = self.sim.world, b=[1], s=[2])
         self.assertEqual(sim2.update_cell(x1, y1), 1)
+        sim2.world.set(x1, y1)
         self.assertEqual(sim2.update_cell(x1, y1), 0)
-
+        # Set survival condition to 1
         sim2.s = [1]
+        sim2.world.set(x1, y1, value=0)
         self.assertEqual(sim2.update_cell(x1, y1), 1)
+        sim2.world.set(x1, y1)
         self.assertEqual(sim2.update_cell(x1, y1), 1)
-        
+
 
     def test_get_generation(self):
         """
