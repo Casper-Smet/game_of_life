@@ -1,4 +1,5 @@
 from World import *
+from typing import List
 
 class Simulator:
     """
@@ -6,7 +7,7 @@ class Simulator:
     Read https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life for an introduction to Conway's Game of Life.
     """
 
-    def __init__(self, world = None):
+    def __init__(self, world = None, b: List[int] = None, s: List[int] = None):
         """
         Constructor for Game of Life simulator.
 
@@ -17,6 +18,16 @@ class Simulator:
             self.world = World(20)
         else:
             self.world = world
+
+        if b == None:
+            self.b = [3]
+        else:
+            self.b = b
+        
+        if s == None:
+            self.s = [2, 3]
+        else:
+            self.s = s
 
     def update_cell(self, x: int, y: int):
         """
