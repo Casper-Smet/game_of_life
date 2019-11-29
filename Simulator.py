@@ -28,8 +28,8 @@ class Simulator:
             self.s = [2, 3]
         else:
             self.s = s
-
-        assert a >= 4 and a < 10
+        if type(a) == int():
+            assert a >= 4 and a < 10
         self.a = a
 
     def update_cell(self, x: int, y: int):
