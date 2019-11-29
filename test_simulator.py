@@ -29,6 +29,33 @@ class TestSimulator(TestCase):
         # In order to check equality between two numpy arrays, you have to use np.array_equal
         self.assertEqual(array_equal(sim.update().world, world2.world), True)
 
+        # Initial world for special conditions test
+        world3 = World(5)
+        world3.set(2, 2)
+
+        world4 = World(5)
+        world4.set(1, 1)
+        world4.set(1, 2)
+        world4.set(1, 3)
+
+        world4.set(3, 1)
+        world4.set(3, 2)
+        world4.set(3, 3)
+
+        world4.set(1, 1)
+        world4.set(2, 1)
+        world4.set(3, 1)
+
+        world4.set(1, 3)
+        world4.set(2, 3)
+        world4.set(3, 3)
+
+
+        # Simular with birth condition of 1 and 8 neighbours, surival at 9 neighbours (impossible)
+        sim2 = Simulator(world=world3, b=[1, 8], s=[9])
+        self.assertEqual(array_equal(sim2.update().world, world4.world), True)
+
+
         
 
     def test_update_cell(self):
