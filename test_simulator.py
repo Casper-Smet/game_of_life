@@ -90,6 +90,21 @@ class TestSimulator(TestCase):
         sim2.world.set(x1, y1)
         self.assertEqual(sim2.update_cell(x1, y1), 1)
 
+        # New simulator with aging mechanic
+        sim3 = Simulator(world=World(5), s=[1], a=6)
+        x2, y2 = 0, 0
+        sim3.world.set(x2, y2, value=4)
+        # Value of x2, y2 should decrease by 1
+        self.assertEqual(sim3.update_cell(x2, y2), 3)
+
+        sim3.world.set(1, 0, value=1)
+        # Value of x2, y2 should stay 4
+        self.assertEqual(sim3.update_cell(x2, y2), 4)
+
+        # Value of 1, 0 should be able to be reborn (equal a==6)
+        self.assertEqual(sim3.update_cell(1, 0), 6)
+
+
 
     def test_get_generation(self):
         """
