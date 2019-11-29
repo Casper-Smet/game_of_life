@@ -44,6 +44,18 @@ class TestWorld(TestCase):
         self.assertEqual(8, len(neighbours))
         self.assertIn(value, neighbours)
 
+    def test_count_living_neighbours(self):
+        """
+        Tests Count living_neighbours
+        """
+        x, y = 6, 7
+        self.world.set(6, 6)
+        self.world.set(5, 6)
+
+        self.assertEqual(self.world.count_living_neighbours(x, y), 2)
+
+        self.assertEqual(self.world.count_living_neighbours(0, 0), 0)
+
     def test_check_survive(self):
         """
         Tests if cell survives
@@ -61,8 +73,6 @@ class TestWorld(TestCase):
 
         # Special survive conditions, survive when 1 neighbour
         self.assertEqual(self.world.check_survive(x1, y1, [1]), True)
-
-
 
 
     def test_check_rebirth(self):

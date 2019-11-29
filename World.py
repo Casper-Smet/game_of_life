@@ -45,6 +45,11 @@ class World:
             return
         self.world[y][x] = value
 
+    def count_living_neighbours(self, x: int, y: int):
+        """
+        Count living_neighbours of (x,y)
+        """
+        pass
                 
     def check_survive(self, x: int, y: int, s: List[int] = [2, 3]):
         assert s != None
