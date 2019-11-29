@@ -41,7 +41,6 @@ class Simulator:
             if reborn:
                 if self.a:
                     new_state = self.a
-                    print(new_state)
                 else:
                     new_state = 1
             else:
