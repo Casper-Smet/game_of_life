@@ -49,7 +49,7 @@ class World:
         """
         Count living_neighbours of (x,y)
         """
-        pass
+        return sum([bool(a) for a in self.get_neighbours(x, y)])
                 
     def check_survive(self, x: int, y: int, s: List[int] = [2, 3]):
         assert s != None
