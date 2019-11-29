@@ -54,6 +54,8 @@ class World:
 
     def check_rebirth(self, x: int, y: int, b: List[int] = [3], a: int = None):
         if a:
+            assert a >= 4
+            
             a_min = 2
             a_max = a - 2
             living_neighbours = sum([(a_min <= x and a_max >= x) for x in self.get_neighbours(x, y)])
