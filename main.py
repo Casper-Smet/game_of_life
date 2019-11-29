@@ -18,7 +18,7 @@ if __name__ == "__main__":
 
     variant = input("Variant: Y/n\n")
     if variant.capitalize() == "Y":
-        b, s = input("BX/SY").split("/")[:2]
+        b, s = input("BX/SY\n").split("/")[:2]
         b = [int(con) for con in b[1:]]
         s = [int(con) for con in s[1:]]
     else:
