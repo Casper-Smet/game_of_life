@@ -54,8 +54,8 @@ class World:
     def check_survive(self, x: int, y: int, s: List[int] = [2, 3]):
         assert s != None
 
-        alive = sum([bool(x) for x in self.get_neighbours(x, y)])
-        return bool(sum([alive == a_state for a_state in s]))
+        living_neighbours = self.count_living_neighbours(x, y)
+        return bool(sum([living_neighbours == a_state for a_state in s]))
 
     def check_rebirth(self, x: int, y: int, b: List[int] = [3], a: int = None):
         if a:
@@ -66,7 +66,7 @@ class World:
             living_neighbours = sum([(a_min <= x and a_max >= x) for x in self.get_neighbours(x, y)])
             
         else:
-            living_neighbours = sum([bool(x) for x in self.get_neighbours(x, y)])
+            living_neighbours = self.count_living_neighbours(x, y)
         return bool(sum([living_neighbours == b_state for b_state in b]))
 
 
