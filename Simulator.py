@@ -70,12 +70,8 @@ class Simulator:
         :return: New state of the world.
         """
         
-        next_flat_world = []
-        for y in range(self.get_world().height):
-            for x in range(self.get_world().width):
-                value = self.update_cell(x, y)
-                next_flat_world.append((x, y, value))
-        
+        next_flat_world = [(x, y, self.update_cell(x, y)) for y in range(self.get_world().height) for x in range(self.get_world().width)]
+
         for cell in next_flat_world:
             x, y, value = cell
             self.world.set(x, y, value=value)
