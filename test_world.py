@@ -55,10 +55,13 @@ class TestWorld(TestCase):
         self.world.set(5, 6)
         # Less than 2 living neighbours, dies
         self.assertEqual(self.world.check_survive(x1, y1), False)
+
         # 2 living neighbours, survives
         self.assertEqual(self.world.check_survive(x2, y2), True)
+
         # Special survive conditions, survive when 1 neighbour
         self.assertEqual(self.world.check_survive(x1, y1, [1]), True)
+
         # More than 3 living neighbours, dies #TODO
 
     def test_check_rebirth(self):
@@ -77,4 +80,7 @@ class TestWorld(TestCase):
 
         # Not three living neighbours, stays dead
         self.assertEqual(self.world.check_rebirth(x1, y1), False)
+
+        # Special birth condition, stays dead with 3 living neighbours
+        self.assertEqual(self.world.check_rebirth(x2, y2, [1]), False)
 
