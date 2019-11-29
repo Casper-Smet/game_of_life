@@ -46,7 +46,7 @@ class World:
         self.world[y][x] = value
 
                 
-    def check_survive(self, x: int, y: int):
+    def check_survive(self, x: int, y: int, s: List[int] = [2, 3]):
         alive = sum([bool(x) for x in self.get_neighbours(x, y)])
         return 2 <= alive <= 3
 
