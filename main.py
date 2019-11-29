@@ -18,15 +18,29 @@ if __name__ == "__main__":
 
     variant = input("Variant: Y/n\n")
     if variant.capitalize() == "Y":
-        b, s = input("BX/SY\n").split("/")[:2]
-        b = [int(con) for con in b[1:]]
-        s = [int(con) for con in s[1:]]
+        split_input = input("BX/SY[/AZ]\n").split("/")
+        if len(split_input) == 3:
+            b, s, a = split_input[:3]
+
+            b = [int(con) for con in b[1:]]
+            s = [int(con) for con in s[1:]]
+            a = int(a[1:])
+        elif len(split_input) == 2:
+            b, s = split_input[:2]
+            b = [int(con) for con in b[1:]]
+            s = [int(con) for con in s[1:]]
+            a = None
+        else:
+            b = [3]
+            s = [2,3]
+            a = None
     else:
         b = [3]
         s = [2,3]
+        a = None
     
-    print(f"Rules;\nb={b}\ts={s}")
-    sim = Simulator(w, b=b, s=s)
+    print(f"Rules;\nb={b}\ts={s}\ta={a}")
+    sim = Simulator(w, b=b, s=s, a=a)
 
     if VISUALISATION:
         vis = Visualisation(sim)
