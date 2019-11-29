@@ -63,7 +63,7 @@ class World:
             
             a_min = 2
             a_max = a - 2
-            living_neighbours = sum([(a_min <= x and a_max >= x) for x in self.get_neighbours(x, y)])
+            living_neighbours = sum([(a_min <= c and a_max >= c) for c in self.get_neighbours(x, y)])
             
         else:
             living_neighbours = self.count_living_neighbours(x, y)
