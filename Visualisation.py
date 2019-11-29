@@ -82,6 +82,7 @@ class Visualisation:
                         y = floor((mouseY - self.scaled_margin) / self.scaled_margin)
                         oldValue = self.simulator.get_world().get(x, y)
                         newValue = (oldValue + 1) % 9
+                        print(newValue)
                         if self.editable:
                             self.simulator.get_world().set(x, y, newValue)
                 if mouseX > self.size[0] - panelWidth + margin and mouseX < self.size[0] - margin:
