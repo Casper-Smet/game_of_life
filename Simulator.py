@@ -7,7 +7,7 @@ class Simulator:
     Read https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life for an introduction to Conway's Game of Life.
     """
 
-    def __init__(self, world = None, b: List[int] = None, s: List[int] = None):
+    def __init__(self, world = None, b: List[int] = None, s: List[int] = None, a: int = None):
         """
         Constructor for Game of Life simulator.
 
@@ -28,6 +28,8 @@ class Simulator:
             self.s = [2, 3]
         else:
             self.s = s
+
+        self.a = a
 
     def update_cell(self, x: int, y: int):
         """
