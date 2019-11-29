@@ -62,7 +62,8 @@ class TestWorld(TestCase):
         # Special survive conditions, survive when 1 neighbour
         self.assertEqual(self.world.check_survive(x1, y1, [1]), True)
 
-        # More than 3 living neighbours, dies #TODO
+
+
 
     def test_check_rebirth(self):
         """
@@ -84,3 +85,26 @@ class TestWorld(TestCase):
         # Special birth condition, stays dead with 3 living neighbours
         self.assertEqual(self.world.check_rebirth(x2, y2, [1]), False)
 
+        # Testing with age conditions
+
+        self.world.set(1, 0, value=0)
+        self.world.set(0, 1, value=0)
+        self.world.set(2, 0, value=0)
+
+
+        x2, y2 = 6, 7
+
+        # Minimum for vertility
+        self.world.set(6, 6, 2)
+        self.world.set(5, 6, 2)
+        self.assertEqual(self.world.check_rebirth(x2, y2, a=6), True)
+        
+        # Below vertility
+        self.world.set(6, 6, 1)
+        self.world.set(5, 6, 1)
+        self.assertEqual(self.world.check_rebirth(x2, y2, a=6), False)
+
+        # Above vertility
+        self.world.set(6, 6, 5)
+        self.world.set(5, 6, 5)
+        self.assertEqual(self.world.check_rebirth(x2, y2, a=6), False)
